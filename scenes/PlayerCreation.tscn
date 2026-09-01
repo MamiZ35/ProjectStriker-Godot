@@ -1,0 +1,351 @@
+[gd_scene load_steps=13 format=3]
+
+[ext_resource type="Script" path="res://src/UI/PlayerCreation/PlayerCreationScreen.cs" id="1_screen"]
+[ext_resource type="Script" path="res://src/UI/Shared/SafeArea.cs" id="10_safearea"]
+[ext_resource type="Script" path="res://src/UI/Shared/PressFeedback.cs" id="11_press"]
+[ext_resource type="Script" path="res://src/UI/Shared/PressFeedback.cs" id="12_press"]
+[ext_resource type="Script" path="res://src/UI/Shared/PressFeedback.cs" id="13_press"]
+[ext_resource type="Script" path="res://src/UI/Shared/PressFeedback.cs" id="14_press"]
+[ext_resource type="Script" path="res://src/UI/Shared/PressFeedback.cs" id="15_press"]
+[ext_resource type="Script" path="res://src/UI/Shared/PressFeedback.cs" id="16_press"]
+[ext_resource type="Texture2D" path="res://assets/ui/HexagonFrame_256.png" id="2_hex"]
+[ext_resource type="Texture2D" path="res://assets/ui/ChevronRight_96.png" id="3_chevron"]
+[ext_resource type="FontFile" path="res://assets/fonts/NotoSans-Bold.ttf" id="4_font_bold"]
+[ext_resource type="FontFile" path="res://assets/fonts/NotoSans-Regular.ttf" id="5_font_regular"]
+
+[node name="PlayerCreationScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_screen")
+
+[node name="SafeArea" type="Control" parent="."]
+layout_mode = 1
+script = ExtResource("10_safearea")
+
+[node name="CornerMark" type="TextureRect" parent="."]
+layout_mode = 1
+offset_left = 343.0
+offset_top = 18.0
+offset_right = 377.0
+offset_bottom = 52.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="OverTitle" type="Label" parent="."]
+layout_mode = 1
+anchors_preset = 10
+anchor_right = 1.0
+offset_left = 0.0
+offset_top = 44.0
+offset_right = 720.0
+offset_bottom = 84.0
+grow_horizontal = 2
+horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+theme_override_font_sizes/font_size = 25
+
+[node name="NameSection" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 164.0
+offset_right = 670.0
+offset_bottom = 334.0
+
+[node name="SectionLabel" type="Label" parent="NameSection"]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 620.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+theme_override_font_sizes/font_size = 21
+text = "İSMİN"
+
+[node name="NameInput" type="LineEdit" parent="NameSection"]
+layout_mode = 1
+offset_left = 42.0
+offset_top = 38.0
+offset_right = 578.0
+offset_bottom = 138.0
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 30
+placeholder_text = "Bir ad yaz..."
+
+[node name="ShuffleButton" type="Button" parent="NameSection"]
+layout_mode = 1
+offset_left = 536.0
+offset_top = 76.0
+offset_right = 612.0
+offset_bottom = 152.0
+script = ExtResource("11_press")
+
+[node name="Icon" type="TextureRect" parent="NameSection/ShuffleButton"]
+layout_mode = 1
+offset_left = 22.0
+offset_top = 8.0
+offset_right = 54.0
+offset_bottom = 40.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="NameSection/ShuffleButton"]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 42.0
+offset_right = 76.0
+offset_bottom = 70.0
+horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+theme_override_font_sizes/font_size = 15
+text = "YENİ AD"
+
+[node name="RoleSection" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 386.0
+offset_right = 670.0
+offset_bottom = 1086.0
+
+[node name="SectionLabel" type="Label" parent="RoleSection"]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 620.0
+offset_bottom = 34.0
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+theme_override_font_sizes/font_size = 21
+text = "MEVKİN"
+
+[node name="RoleStack" type="VBoxContainer" parent="RoleSection"]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 38.0
+offset_right = 620.0
+offset_bottom = 654.0
+theme_constants = { "separation": 16 }
+
+[node name="RoleCard_0" type="Button" parent="RoleSection/RoleStack"]
+layout_mode = 2
+custom_minimum_size_y = 142.0
+size_flags_horizontal = 3
+script = ExtResource("12_press")
+
+[node name="Icon" type="TextureRect" parent="RoleSection/RoleStack/RoleCard_0"]
+layout_mode = 1
+offset_left = 28.0
+offset_top = 45.0
+offset_right = 80.0
+offset_bottom = 97.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="RoleSection/RoleStack/RoleCard_0"]
+layout_mode = 1
+offset_left = 104.0
+offset_top = 12.0
+offset_right = 548.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 27
+
+[node name="Sentence" type="Label" parent="RoleSection/RoleStack/RoleCard_0"]
+layout_mode = 1
+offset_left = 104.0
+offset_top = 62.0
+offset_right = 548.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("5_font_regular")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 0.78)
+theme_override_font_sizes/font_size = 19
+text_autowrap_mode = 2
+
+[node name="Chevron" type="TextureRect" parent="RoleSection/RoleStack/RoleCard_0"]
+visible = false
+layout_mode = 1
+offset_left = 566.0
+offset_top = 56.0
+offset_right = 596.0
+offset_bottom = 86.0
+texture = ExtResource("3_chevron")
+mouse_filter = 2
+
+[node name="RoleCard_1" type="Button" parent="RoleSection/RoleStack"]
+layout_mode = 2
+custom_minimum_size_y = 142.0
+size_flags_horizontal = 3
+script = ExtResource("13_press")
+
+[node name="Icon" type="TextureRect" parent="RoleSection/RoleStack/RoleCard_1"]
+layout_mode = 1
+offset_left = 28.0
+offset_top = 45.0
+offset_right = 80.0
+offset_bottom = 97.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="RoleSection/RoleStack/RoleCard_1"]
+layout_mode = 1
+offset_left = 104.0
+offset_top = 12.0
+offset_right = 548.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 27
+
+[node name="Sentence" type="Label" parent="RoleSection/RoleStack/RoleCard_1"]
+layout_mode = 1
+offset_left = 104.0
+offset_top = 62.0
+offset_right = 548.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("5_font_regular")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 0.78)
+theme_override_font_sizes/font_size = 19
+text_autowrap_mode = 2
+
+[node name="Chevron" type="TextureRect" parent="RoleSection/RoleStack/RoleCard_1"]
+visible = false
+layout_mode = 1
+offset_left = 566.0
+offset_top = 56.0
+offset_right = 596.0
+offset_bottom = 86.0
+texture = ExtResource("3_chevron")
+mouse_filter = 2
+
+[node name="RoleCard_2" type="Button" parent="RoleSection/RoleStack"]
+layout_mode = 2
+custom_minimum_size_y = 142.0
+size_flags_horizontal = 3
+script = ExtResource("14_press")
+
+[node name="Icon" type="TextureRect" parent="RoleSection/RoleStack/RoleCard_2"]
+layout_mode = 1
+offset_left = 28.0
+offset_top = 45.0
+offset_right = 80.0
+offset_bottom = 97.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="RoleSection/RoleStack/RoleCard_2"]
+layout_mode = 1
+offset_left = 104.0
+offset_top = 12.0
+offset_right = 548.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 27
+
+[node name="Sentence" type="Label" parent="RoleSection/RoleStack/RoleCard_2"]
+layout_mode = 1
+offset_left = 104.0
+offset_top = 62.0
+offset_right = 548.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("5_font_regular")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 0.78)
+theme_override_font_sizes/font_size = 19
+text_autowrap_mode = 2
+
+[node name="Chevron" type="TextureRect" parent="RoleSection/RoleStack/RoleCard_2"]
+visible = false
+layout_mode = 1
+offset_left = 566.0
+offset_top = 56.0
+offset_right = 596.0
+offset_bottom = 86.0
+texture = ExtResource("3_chevron")
+mouse_filter = 2
+
+[node name="RoleCard_3" type="Button" parent="RoleSection/RoleStack"]
+layout_mode = 2
+custom_minimum_size_y = 142.0
+size_flags_horizontal = 3
+script = ExtResource("15_press")
+
+[node name="Icon" type="TextureRect" parent="RoleSection/RoleStack/RoleCard_3"]
+layout_mode = 1
+offset_left = 28.0
+offset_top = 45.0
+offset_right = 80.0
+offset_bottom = 97.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="RoleSection/RoleStack/RoleCard_3"]
+layout_mode = 1
+offset_left = 104.0
+offset_top = 12.0
+offset_right = 548.0
+offset_bottom = 76.0
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 27
+
+[node name="Sentence" type="Label" parent="RoleSection/RoleStack/RoleCard_3"]
+layout_mode = 1
+offset_left = 104.0
+offset_top = 62.0
+offset_right = 548.0
+offset_bottom = 134.0
+theme_override_fonts/font = ExtResource("5_font_regular")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 0.78)
+theme_override_font_sizes/font_size = 19
+text_autowrap_mode = 2
+
+[node name="Chevron" type="TextureRect" parent="RoleSection/RoleStack/RoleCard_3"]
+visible = false
+layout_mode = 1
+offset_left = 566.0
+offset_top = 56.0
+offset_right = 596.0
+offset_bottom = 86.0
+texture = ExtResource("3_chevron")
+mouse_filter = 2
+
+[node name="StartCard" type="Button" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 1404.0
+offset_right = 670.0
+offset_bottom = 1512.0
+script = ExtResource("16_press")
+
+[node name="Label" type="Label" parent="StartCard"]
+layout_mode = 1
+offset_left = 96.0
+offset_top = 0.0
+offset_right = 572.0
+offset_bottom = 108.0
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_fonts/font = ExtResource("4_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 29
+text = "KARİYERİNE BAŞLA"
+
+[node name="Chevron" type="TextureRect" parent="StartCard"]
+layout_mode = 1
+offset_left = 596.0
+offset_top = 37.0
+offset_right = 630.0
+offset_bottom = 71.0
+texture = ExtResource("3_chevron")
+mouse_filter = 2

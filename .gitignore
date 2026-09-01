@@ -1,0 +1,19 @@
+# Godot
+.godot/
+
+# Build output (APK — artifact only, no commit)
+build/
+
+# .NET / C#
+bin/
+obj/
+*.suo
+*.user
+*.userprefs
+.vs/
+.vscode/
+.idea/
+
+# OS
+.DS_Store
+Thumbs.db

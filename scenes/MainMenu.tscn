@@ -1,0 +1,289 @@
+[gd_scene load_steps=11 format=3]
+
+[ext_resource type="Script" path="res://src/UI/MainMenu/MainMenuScreen.cs" id="1_screen"]
+[ext_resource type="Script" path="res://src/UI/Shared/SafeArea.cs" id="10_safearea"]
+[ext_resource type="Script" path="res://src/UI/Shared/PressFeedback.cs" id="11_press"]
+[ext_resource type="Script" path="res://src/UI/Shared/PressFeedback.cs" id="12_press"]
+[ext_resource type="Script" path="res://src/UI/Shared/PressFeedback.cs" id="13_press"]
+[ext_resource type="Texture2D" path="res://assets/ui/HexagonFrame_256.png" id="2_hex"]
+[ext_resource type="Texture2D" path="res://assets/ui/ChevronRight_96.png" id="3_chevron"]
+[ext_resource type="Texture2D" path="res://assets/ui/Background.png" id="4_bg"]
+[ext_resource type="Texture2D" path="res://assets/ui/Vignette_512.png" id="5_vignette"]
+[ext_resource type="FontFile" path="res://assets/fonts/NotoSans-Bold.ttf" id="6_font_bold"]
+[ext_resource type="FontFile" path="res://assets/fonts/NotoSans-Regular.ttf" id="7_font_regular"]
+
+[node name="MainMenuScreen" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_screen")
+
+[node name="SafeArea" type="Control" parent="."]
+layout_mode = 1
+script = ExtResource("10_safearea")
+
+[node name="Background" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("4_bg")
+mouse_filter = 2
+
+[node name="Vignette" type="TextureRect" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("5_vignette")
+mouse_filter = 2
+
+[node name="TopBar" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 720.0
+offset_bottom = 120.0
+
+[node name="NewsChip" type="Control" parent="TopBar"]
+layout_mode = 1
+offset_left = 36.0
+offset_top = 34.0
+offset_right = 256.0
+offset_bottom = 86.0
+
+[node name="Icon" type="TextureRect" parent="TopBar/NewsChip"]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 6.0
+offset_right = 40.0
+offset_bottom = 46.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="TopBar/NewsChip"]
+layout_mode = 1
+offset_left = 52.0
+offset_top = 0.0
+offset_right = 220.0
+offset_bottom = 52.0
+theme_override_fonts/font = ExtResource("6_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 26
+text = "NEWS"
+
+[node name="TitleBlock" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 150.0
+offset_right = 720.0
+offset_bottom = 570.0
+
+[node name="MonogramFrame" type="TextureRect" parent="TitleBlock"]
+layout_mode = 1
+offset_left = 302.0
+offset_top = 16.0
+offset_right = 418.0
+offset_bottom = 132.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="MonogramText" type="Label" parent="TitleBlock"]
+layout_mode = 1
+offset_left = 302.0
+offset_top = 16.0
+offset_right = 418.0
+offset_bottom = 132.0
+horizontal_alignment = 1
+vertical_alignment = 1
+theme_override_fonts/font = ExtResource("6_font_bold")
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+theme_override_font_sizes/font_size = 44
+text = "PS"
+
+[node name="Title" type="Label" parent="TitleBlock"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 186.0
+offset_right = 710.0
+offset_bottom = 250.0
+horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("6_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 38
+text = "P R O J E C T   S T R I K E R"
+
+[node name="Tagline" type="Label" parent="TitleBlock"]
+layout_mode = 1
+offset_left = 10.0
+offset_top = 262.0
+offset_right = 710.0
+offset_bottom = 296.0
+horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("7_font_regular")
+theme_override_colors/font_color = Color(0.788235, 0.658824, 0.298039, 1)
+theme_override_font_sizes/font_size = 22
+text = "YOUR CAREER. YOUR LEGACY."
+
+[node name="CTAStack" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 50.0
+offset_top = 501.0
+offset_right = 670.0
+offset_bottom = 879.0
+
+[node name="NewCareerCard" type="Button" parent="CTAStack"]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 620.0
+offset_bottom = 110.0
+script = ExtResource("11_press")
+
+[node name="Icon" type="TextureRect" parent="CTAStack/NewCareerCard"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 32.0
+offset_right = 76.0
+offset_bottom = 78.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CTAStack/NewCareerCard"]
+layout_mode = 1
+offset_left = 100.0
+offset_top = 0.0
+offset_right = 524.0
+offset_bottom = 110.0
+vertical_alignment = 1
+theme_override_fonts/font = ExtResource("6_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 30
+text = "NEW CAREER"
+
+[node name="Chevron" type="TextureRect" parent="CTAStack/NewCareerCard"]
+layout_mode = 1
+offset_left = 558.0
+offset_top = 38.0
+offset_right = 592.0
+offset_bottom = 72.0
+texture = ExtResource("3_chevron")
+mouse_filter = 2
+
+[node name="ContinueCard" type="Button" parent="CTAStack"]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 134.0
+offset_right = 620.0
+offset_bottom = 244.0
+script = ExtResource("12_press")
+
+[node name="Icon" type="TextureRect" parent="CTAStack/ContinueCard"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 32.0
+offset_right = 76.0
+offset_bottom = 78.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CTAStack/ContinueCard"]
+layout_mode = 1
+offset_left = 100.0
+offset_top = 0.0
+offset_right = 524.0
+offset_bottom = 110.0
+vertical_alignment = 1
+theme_override_fonts/font = ExtResource("6_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 30
+text = "CONTINUE"
+
+[node name="Chevron" type="TextureRect" parent="CTAStack/ContinueCard"]
+layout_mode = 1
+offset_left = 558.0
+offset_top = 38.0
+offset_right = 592.0
+offset_bottom = 72.0
+texture = ExtResource("3_chevron")
+mouse_filter = 2
+
+[node name="SettingsCard" type="Button" parent="CTAStack"]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 268.0
+offset_right = 620.0
+offset_bottom = 378.0
+script = ExtResource("13_press")
+
+[node name="Icon" type="TextureRect" parent="CTAStack/SettingsCard"]
+layout_mode = 1
+offset_left = 30.0
+offset_top = 32.0
+offset_right = 76.0
+offset_bottom = 78.0
+texture = ExtResource("2_hex")
+mouse_filter = 2
+
+[node name="Label" type="Label" parent="CTAStack/SettingsCard"]
+layout_mode = 1
+offset_left = 100.0
+offset_top = 0.0
+offset_right = 524.0
+offset_bottom = 110.0
+vertical_alignment = 1
+theme_override_fonts/font = ExtResource("6_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 30
+text = "SETTINGS"
+
+[node name="Chevron" type="TextureRect" parent="CTAStack/SettingsCard"]
+layout_mode = 1
+offset_left = 558.0
+offset_top = 38.0
+offset_right = 592.0
+offset_bottom = 72.0
+texture = ExtResource("3_chevron")
+mouse_filter = 2
+
+[node name="Footer" type="Control" parent="."]
+layout_mode = 1
+anchors_preset = 0
+offset_left = 0.0
+offset_top = 1448.0
+offset_right = 720.0
+offset_bottom = 1524.0
+
+[node name="Version" type="Label" parent="Footer"]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 0.0
+offset_right = 720.0
+offset_bottom = 42.0
+horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("6_font_bold")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 1)
+theme_override_font_sizes/font_size = 22
+text = "v1.0.0"
+
+[node name="Copyright" type="Label" parent="Footer"]
+layout_mode = 1
+offset_left = 0.0
+offset_top = 42.0
+offset_right = 720.0
+offset_bottom = 76.0
+horizontal_alignment = 1
+theme_override_fonts/font = ExtResource("7_font_regular")
+theme_override_colors/font_color = Color(0.92, 0.92, 0.92, 0.45)
+theme_override_font_sizes/font_size = 17
+text = "© 2026 Striker Studios"
