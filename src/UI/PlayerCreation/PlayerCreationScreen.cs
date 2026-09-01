@@ -1,5 +1,6 @@
 using Godot;
 using Striker.Core.Career;
+using Striker.Game;
 using Striker.Gameplay;
 
 namespace Striker.UI.PlayerCreation
@@ -80,13 +81,20 @@ namespace Striker.UI.PlayerCreation
             _nameInput.Text = PlayerCreationContent.RandomName();
         }
 
-        /// <summary>CTA: rol seçiliyse seçme gününe (ContractBeat) geçer.</summary>
+        /// <summary>
+        /// CTA: rol seçiliyse seçme gününe (ContractBeat) geçer. Faz 7: oyuncunun
+        /// kimliği (ad + rol) bu noktada diske kalıcı olarak yazılır — böylece
+        /// uygulama yeniden açılınca CONTINUE bu kariyere bağlanır.
+        /// </summary>
         private void OnStartClicked()
         {
             if (!HasSelection)
             {
                 return;
             }
+
+            string name = _nameInput.Text.Trim();
+            CareerSaveRepository.BeginCareer(name, SelectedRole!.Value);
 
             GetTree().ChangeSceneToFile(ContractBeatScenePath);
         }

@@ -1,5 +1,6 @@
 using Godot;
 using Striker.Core.Career;
+using Striker.Game;
 using Striker.Gameplay.ContractBeat;
 using Striker.UI.Shared;
 
@@ -52,6 +53,11 @@ namespace Striker.UI.ContractBeat
             // çözümlenmiş akışta InvalidOperationException fırlatır.
             if (_viewModel.IsSignedResolution)
             {
+                // Faz 7: kariyer sözleşmeyle imzalandı → kaydı signed=true yap.
+                // PlayerCreation kimliği yazdıysa bu, CONTINUE'ı TrainingCamp
+                // seviyesine taşır. İdempotent (çok çağrılabilir).
+                CareerSaveRepository.CommitCareer();
+
                 CreateTrainingCampNavigation();
             }
         }

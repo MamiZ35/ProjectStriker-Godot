@@ -18,6 +18,7 @@ const CAMP_PATH := "res://scenes/TrainingCamp.tscn"
 var _failures := 0
 
 func _initialize() -> void:
+	_clear_save()  # Faz 7: clean state — save sistemi var, testler bağımsız çalışsın
 	await _check_safe_area_nodes()
 	await _check_press_feedback_main_menu()
 	await _check_press_feedback_dynamic_buttons()
@@ -37,6 +38,10 @@ func _expect(condition: bool, message: String) -> void:
 	else:
 		push_error("  FAIL: ", message)
 		_failures += 1
+
+func _clear_save() -> void:
+	if FileAccess.file_exists("user://career.save"):
+		DirAccess.remove_absolute("user://career.save")
 
 func _add_scene(path: String) -> Control:
 	var packed_scene: PackedScene = load(path) as PackedScene

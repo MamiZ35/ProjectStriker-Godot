@@ -1,4 +1,5 @@
 using Godot;
+using Striker.Game;
 
 namespace Striker.UI.MainMenu
 {
@@ -14,6 +15,8 @@ namespace Striker.UI.MainMenu
     {
         private const string CardTexturePath = "res://assets/ui/Card_9slice_144.png";
         private const string PlayerCreationScenePath = "res://scenes/PlayerCreation.tscn";
+        private const string TrainingCampScenePath = "res://scenes/TrainingCamp.tscn";
+        private const string ContractBeatScenePath = "res://scenes/ContractBeat.tscn";
 
         /// <summary>Devre dışı kartların/rozetlerin bütünleşik solukluk seviyesi (~%45).</summary>
         private const float DisabledOpacity = 0.45f;
@@ -43,6 +46,32 @@ namespace Striker.UI.MainMenu
             ApplyStyling();
             ApplyCardStyleboxes();
             NormalizeTexts();
+            ApplyContinueState();
+        }
+
+        /// <summary>
+        /// Faz 7 (Save/Load): kayıt varsa CONTINUE kartını aktif eder.
+        /// Tasarım kuralına sadık kalır: TrainingCamp'e yalnızca signed kariyer
+        /// girer; henüz imzalanmamış kariyer ContractBeat'e (seçmeler) döner.
+        /// </summary>
+        private void ApplyContinueState()
+        {
+            if (!CareerSaveRepository.HasSave())
+            {
+                return;
+            }
+
+            bool signed = CareerSaveRepository.Load()?.Signed ?? false;
+            EnableContinue(signed);
+        }
+
+        private void EnableContinue(bool signed)
+        {
+            _continueButton.Disabled = false;
+            _continueButton.Modulate = new Color(1f, 1f, 1f, 1f);
+            _continueButton.Pressed += () =>
+                GetTree().ChangeSceneToFile(
+                    signed ? TrainingCampScenePath : ContractBeatScenePath);
         }
 
         /// <summary>

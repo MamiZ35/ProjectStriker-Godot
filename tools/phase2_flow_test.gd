@@ -17,6 +17,7 @@ const MENU_PATH := "res://scenes/MainMenu.tscn"
 var _failures := 0
 
 func _initialize() -> void:
+	_clear_save()
 	await _check_choice_flow(0, "stay")
 	await _check_choice_flow(1, "room")
 	await _check_menu_button()
@@ -37,6 +38,10 @@ func _expect(condition: bool, message: String) -> void:
 	else:
 		push_error("  FAIL: ", message)
 		_failures += 1
+
+func _clear_save() -> void:
+	if FileAccess.file_exists("user://career.save"):
+		DirAccess.remove_absolute("user://career.save")
 
 func _add_scene(path: String) -> Control:
 	var packed_scene: PackedScene = load(path) as PackedScene
@@ -144,6 +149,9 @@ func _check_contract_bridge() -> void:
 
 func _check_main_menu() -> void:
 	print("== main menu ==")
+	# Faz 7: önceki test (player creation CTA) bir save yazmış olabilir;
+	# "CONTINUE disabled" kontrolü için temiz state gerekir.
+	_clear_save()
 	var menu: Control = await _add_scene(MENU_PATH)
 
 	# Üç CTA kartı, yalnızca NEW CAREER aktif (D-005).

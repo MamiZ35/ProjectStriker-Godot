@@ -12,8 +12,9 @@
   </ItemGroup>
   <ItemGroup>
     <!-- Motor-bağımsız mantık kaynakları doğrudan derlenir (GodotSharp bağımlılığı yok).
-         GodotSharp gerektiren ekran sınıfları (partial class) hariç tutulur. -->
-    <Compile Include="../src/**/*.cs" Exclude="../src/UI/**/*.cs" />
+         GodotSharp gerektiren ekran sınıfları (partial class) ve src/Game (FileAccess)
+         hariç tutulur. -->
+    <Compile Include="../src/**/*.cs" Exclude="../src/UI/**/*.cs;../src/Game/**/*.cs" />
     <Compile Include="../src/UI/ContractBeat/ContractBeatViewModel.cs" />
   </ItemGroup>
 </Project>
